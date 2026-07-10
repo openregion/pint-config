@@ -1,0 +1,25 @@
+{
+    "name": "openregion/pint-config",
+    "description": "Shared Laravel Pint configuration for Open Region projects.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "code-style",
+        "configuration",
+        "formatter",
+        "laravel",
+        "php",
+        "pint"
+    ],
+    "homepage": "https://github.com/openregion/pint-config",
+    "support": {
+        "issues": "https://github.com/openregion/pint-config/issues",
+        "source": "https://github.com/openregion/pint-config"
+    },
+    "require": {
+        "laravel/pint": "^1.29.3"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
