@@ -2,7 +2,7 @@
 
 Reusable [Laravel Pint](https://laravel.com/docs/pint) configuration for Open Region PHP projects.
 
-The configuration starts with Pint's `laravel` preset and applies Open Region's shared PHP style. Laravel rules with different Open Region behavior are overridden, and additional Open Region rules are included as well.
+The configuration starts with Pint's `laravel` preset, applies PER Coding Style 3.0, and gives Open Region's explicit PHP CS Fixer rules the highest priority.
 
 ## Installation
 
@@ -62,12 +62,11 @@ vendor/bin/pint --config=vendor/openregion/pint-config/pint.json
 
 ## Rule baseline
 
-The current rule comparison uses:
+The first group in `pint.json` contains the rules from `@PER-CS3x0` in PHP CS Fixer 3.95.8, bundled with Pint 1.29.3. The second group contains the explicit rules from Open Region's [PHP CS Fixer config 1.2.0](https://github.com/openregion/php-cs-fixer-config/blob/1.2.0/src/Config.php). Rules shared by both groups appear once with their Open Region settings.
 
-- Laravel Pint 1.29.3 and its `laravel` preset;
-- PHP CS Fixer 3.95.8, bundled with that Pint release.
+The final two entries disable Laravel preset rules to match that release. Pint keeps PHPDoc types that repeat a signature and formats logical negation as `!$ready`.
 
-Semantically equivalent configurations are left to the Laravel preset. The published `pint.json` contains explicit rule overrides and additions instead of another preset, keeping the inheritance order predictable.
+Pint merges the Laravel preset with the JSON rules before PHP CS Fixer expands named sets. A literal `@PER-CS3x0` entry would overwrite some explicit settings, including alphabetical import sorting. Listing the individual rules preserves the intended precedence and allows projects to override them via `extend`.
 
 ## License
 
